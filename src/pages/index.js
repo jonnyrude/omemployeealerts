@@ -8,10 +8,11 @@ import Image from "../components/image"
 const IndexPage = () => (
   <Layout>
     {/* <SEO title="Home" /> */}
-    <h1>No delays currently</h1>
+    <h1>TEST NUMBER 2</h1>
     <p>
-      As of: 2/11/2020 10:10 AM <br />
-      There are no delays.
+      As of: 2/13/20 08:55 PM
+      <br />
+      This is a test message.
     </p>
 
     {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
