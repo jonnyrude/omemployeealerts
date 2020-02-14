@@ -2,7 +2,7 @@ import React from "react"
 // import { Link } from "gatsby"
 
 import Layout from "../components/layout"
-import Image from "../components/image"
+// import Image from "../components/image"
 // import SEO from "../components/seo"
 
 const IndexPage = () => (
@@ -10,8 +10,11 @@ const IndexPage = () => (
     {/* <SEO title="Home" /> */}
     <h1>No delays currently</h1>
     <p>
-      As of: 2/13/2020 09:13 PM <br />
+      As of: 2/13/2020 10:00 PM <br />
       There are no delays.
+      <br />
+      <br />
+      Be sure to refresh the page for the latest information.
     </p>
 
     {/* <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
