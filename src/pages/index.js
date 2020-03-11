@@ -10,7 +10,7 @@ const IndexPage = () => (
     {/* <SEO title="Home" /> */}
     <h1>No delays currently</h1>
     <p>
-      As of: 2/13/2020 10:00 PM <br />
+      As of: 3/11/2020 2:45 PM <br />
       There are no delays.
       <br />
       <br />
