@@ -1,10 +1,11 @@
 import React, { useState } from "react"
 // import { Link } from "gatsby"
 import IdentityModal, {
-  useIdentityContext,
+  useNetlifyIdentity,
 } from "react-netlify-identity-widget"
 
 const Login = () => {
+  const identity = useNetlifyIdentity("https://omemployees.com/")
   const [showDialog, setShowDialog] = useState(false)
   return (
     <div>
@@ -16,6 +17,7 @@ const Login = () => {
 
       {/* Button to toggle showDialog */}
       <button onClick={e => setShowDialog(true)}>Login</button>
+      <pre>{JSON.stringify(identity, null, 2)}</pre>
     </div>
   )
 }

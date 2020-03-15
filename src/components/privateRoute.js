@@ -1,9 +1,12 @@
 import React from "react"
 import { navigate } from "gatsby"
-import { isLoggedIn } from "../services/auth"
+import { useNetlifyIdentity } from "react-netlify-identity-widget"
+
 const PrivateRoute = ({ component: Component, location, ...rest }) => {
-  if (!isLoggedIn() && location.pathname !== `/app/login`) {
-    navigate("/app/login")
+  const identity = useNetlifyIdentity("https://omemployees.com/")
+
+  if (!identity.isLoggedIn) {
+    navigate("/")
     return null
   }
   return <Component {...rest} />
