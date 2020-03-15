@@ -1,10 +1,7 @@
 import React, { useState } from "react"
-// import { Link } from "gatsby"
-// import IdentityModal, {
-//   useNetlifyIdentity,
-// } from "react-netlify-identity-widget"
 import { useIdentityContext } from "react-netlify-identity"
 import { navigate } from "gatsby"
+import { Button, Form, Input } from "antd"
 
 const Login = () => {
   const [showDialog, setShowDialog] = useState(false)
@@ -13,24 +10,18 @@ const Login = () => {
   const formRef = React.useRef()
   const [msg, setMsg] = useState("")
 
-  // const identity = useNetlifyIdentity("https://omemployees.com/")
-
   if (!identity.isLoggedIn || !identity.user) {
     return (
       <div>
-        {/* IdetntyModal should always render, toggle showDialog to show/hide login prompt */}
-        {/* <IdentityModal
-        showDialog={showDialog}
-        onCloseDialog={() => setShowDialog(false)}
-      /> */}
-
-        {/* LOGIN FORM */}
-        <form
+        LOGIN:
+        <Form
+          labelCol={{ span: 6 }}
+          wrapperCol={{ span: 12 }}
+          name="login"
           ref={formRef}
-          onSubmit={e => {
-            e.preventDefault()
-            const email = e.target.email.value
-            const password = e.target.password.value
+          onFinish={values => {
+            const email = values.email
+            const password = values.password
             identity
               .loginUser(email, password, true)
               .then(user => {
@@ -42,35 +33,43 @@ const Login = () => {
               )
           }}
         >
-          <div>
-            <label>
-              Email:
-              <input type="email" name="email" />
-            </label>
-          </div>
-          <div>
-            <label>
-              {" "}
-              Password:
-              <input type="password" name="password" />
-            </label>
-          </div>
-          <div>
-            <input type="submit" value="Log in" />
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              { required: true, message: "Please input and email address" },
+            ]}
+          >
+            <Input type="email" />
+          </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: "Please input a password" }]}
+          >
+            <Input.Password type="password" name="password" />
+          </Form.Item>
+          <Form.Item wrapperCol={{ offset: 6, span: 12 }}>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
             {msg && <pre>{msg}</pre>}
-          </div>
-        </form>
-
-        {/* Button to toggle showDialog */}
-        {/* <button onClick={e => setShowDialog(true)}>Login</button> */}
+          </Form.Item>
+        </Form>
       </div>
     )
   } else {
     return (
       <div>
-        <button onClick={identity.logoutUser}>
-          You are signed in. Log Out
-        </button>
+        <Button
+          type="primary"
+          onClick={() => {
+            identity.logoutUser()
+            navigate("/app")
+          }}
+        >
+          You are signed in - Click Here to Log Out
+        </Button>
       </div>
     )
   }

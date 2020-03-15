@@ -3,10 +3,13 @@ import { Router } from "@reach/router"
 import Layout from "../components/layout"
 import { navigate } from "gatsby"
 import { useIdentityContext } from "react-netlify-identity"
+import { Layout as AntLayout } from "antd"
 import PrivateHeader from "../components/privateHeader"
 import EeStatus from "../components/eeStatus"
 import Login from "../components/login.js"
 import AppHome from "../components/appHome"
+
+const { Content } = AntLayout
 
 const App = () => {
   const PrivateRoute = ({ component: Component, location, ...rest }) => {
@@ -21,17 +24,17 @@ const App = () => {
 
   return (
     <Layout>
-      <PrivateHeader />
-      {/*<div>
-        <h2>Logged In Page/App</h2>
-        {/* {useIdentityContext().isLoggedIn && <button> Logout </button>}
-      </div> */}
-      <Router>
-        <PrivateRoute path="/app/home" component={AppHome} />
-        <PrivateRoute path="/app/status" component={EeStatus} />
-      </Router>
-      <Login />
-      <footer></footer>
+      <AntLayout>
+        <PrivateHeader />
+        <Content style={{ padding: "0 50px", marginTop: 20 }}>
+          <Router>
+            <PrivateRoute path="/app/home" component={AppHome} />
+            <PrivateRoute path="/app/status" component={EeStatus} />
+          </Router>
+
+          <Login />
+        </Content>
+      </AntLayout>
     </Layout>
   )
 }
