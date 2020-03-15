@@ -8,11 +8,11 @@
 import React, { useState } from "react"
 import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
-import IdentityModal, { // for Netlify Identity - https://github.com/sw-yx/react-netlify-identity-widget
-  IdentityContextProvider,
-} from "react-netlify-identity-widget"
+// import IdentityModal, { // for Netlify Identity - https://github.com/sw-yx/react-netlify-identity-widget
+//   IdentityContextProvider,
+// } from "react-netlify-identity-widget"
+import { IdentityContextProvider } from "react-netlify-identity"
 import "react-netlify-identity-widget/styles.css"
-import Login from "./login.js"
 
 import Header from "./header"
 import "./layout.css"
@@ -34,7 +34,6 @@ const Layout = ({ children }) => {
           }}
         >
           <main>{children}</main>
-          <Login />
         </div>
       </IdentityContextProvider>
     </>
