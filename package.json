@@ -10,7 +10,7 @@
     "@reach/tabs": "^0.9.0",
     "@reach/visually-hidden": "^0.9.0",
     "antd": "^4.0.3",
-    "gatsby": "^2.19.7",
+    "gatsby": "^4.25.7",
     "gatsby-image": "^2.2.39",
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-manifest": "^2.2.41",
